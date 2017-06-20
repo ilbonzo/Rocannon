@@ -1,13 +1,14 @@
+---
 - hosts: all
   become: true
   pre_tasks:
     - name: update apt cache
-      apt: update_cache=yes
+      command: apt-get -y update
 
   tasks:
     - name: install lynx
-      apt: name=lynx state=latest
+      command: apt-get install -y lynx
 
   post_tasks:
-    - name: update apt cache
-      apt: update_cache=yes
+    - name: hostname
+      command: hostname
