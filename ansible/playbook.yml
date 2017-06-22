@@ -3,17 +3,19 @@
   become: true
   pre_tasks:
     - name: update apt cache
-      command: apt-get -y update
+      apt: update_cache=yes
 
   tasks:
-    - name: install lynx
-      command: apt-get install -y lynx
-
+    - name: install packages
+      apt: name={{ item }} state=latest
+      with_items:
+        - lynx
+        - vim
+        - mc
+        - joe
 
   post_tasks:
     - name: hostname
       command: hostname
 
-
-# - include: webserver.yml
-# - include: database.yml
+- include: webserver.yml
