@@ -8,6 +8,10 @@ Vagrant.configure("2") do |config|
 
   config.ssh.forward_agent = true
 
+  # config.vm.provision "shell",
+    # inline: "sudo apt-get -y update && sudo apt-get -y install lynx"
+
+
   config.vm.provision :ansible do |ansible|
     ansible.groups = {
       "development" => ["default"],

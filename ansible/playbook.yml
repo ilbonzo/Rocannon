@@ -9,6 +9,11 @@
     - name: install lynx
       command: apt-get install -y lynx
 
+
   post_tasks:
     - name: hostname
       command: hostname
+
+
+# - include: webserver.yml
+# - include: database.yml
