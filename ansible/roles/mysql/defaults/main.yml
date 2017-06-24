@@ -1,0 +1,5 @@
+---
+# defaults file for mysql
+db_user: pippo
+db_name: pippo
+db_password: pippo
