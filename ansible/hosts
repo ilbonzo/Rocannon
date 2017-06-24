@@ -1,2 +1,14 @@
 [default]
+# 192.168.33.66 ansible_user=vagrant
+
+[webserver]
+# web ansible_user=vagrant
 192.168.33.66 ansible_user=vagrant
+
+[dbserver]
+# db ansible_user=vagrant
+192.168.33.67 ansible_user=vagrant
+
+[loadbalancer]
+# lb ansible_user=vagrant
+192.168.33.68 ansible_user=vagrant

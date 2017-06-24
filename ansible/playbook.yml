@@ -19,3 +19,5 @@
       command: hostname
 
 - include: webserver.yml
+- include: database.yml
+- include: loadbalancer.yml
