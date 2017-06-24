@@ -3,6 +3,7 @@
 
 [webserver]
 # web ansible_user=vagrant
+192.168.33.65 ansible_user=vagrant
 192.168.33.66 ansible_user=vagrant
 
 [dbserver]

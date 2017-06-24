@@ -39,7 +39,7 @@ Vagrant.configure("2") do |config|
       "all_groups:children" => ["development"]
 
     }
-    ansible.playbook = "ansible/playbook.yml"
+    ansible.playbook = "ansible/site.yml"
   end
 
 end

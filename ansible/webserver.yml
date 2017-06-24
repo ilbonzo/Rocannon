@@ -1,71 +1,10 @@
 ---
 - hosts: webserver
   become: true
-  tasks:
-    - name: edit etc hosts
-      lineinfile:
-        path: /etc/hosts
-        state: present
-        line: '192.168.33.67 db'
 
-    - name: install apache2 and server components
-      apt: name={{ item }} update_cache=yes
-      with_items:
-        - apache2
-        - libapache2-mod-wsgi
-        - python-pip
-        - python-virtualenv
-        - python-mysqldb
-
-    - name: apache2 is running
-      service: name=apache2 state=started enabled=yes
-
-    - name: check mod rewrite
-      apache2_module:
-        state=present
-        name=rewrite
-      notify:
-        - restart apache2
-
-    - name: ensure mod_wsgi enabled
-      apache2_module:
-        state=present
-        name=wsgi
-      notify:
-        - restart apache2
-
-    - name: copy demo app source
-      copy:
-        src=../demo/app/
-        dest=/var/www/demo
-        mode=755
-      notify: restart apache2
-
-    - name: copy virtual host config
-      copy:
-        src=../demo/demo.conf
-        dest=/etc/apache2/sites-available
-        mode=755
-      notify: restart apache2
-
-    - name: setup python virtualenv
-      pip:
-        requirements=/var/www/demo/requirements.txt
-        virtualenv=/var/www/demo/.venv
-      notify: restart apache2
-
-    - name: de-activate default apache site
-      file:
-        path=/etc/apache2/sites-enabled/000-default.conf
-        state=absent
-      notify: restart apache2
-
-    - name: activate demo apache site
-      file:
-        src=/etc/apache2/sites-available/demo.conf
-        dest=/etc/apache2/sites-enabled/demo.conf
-        state=link
-      notify: restart apache2
+  roles:
+    - apache
+    - demo
 
   handlers:
     - name: restart apache2

@@ -1,0 +1,33 @@
+---
+# tasks file for apache
+- name: edit etc hosts
+  lineinfile:
+    path: /etc/hosts
+    state: present
+    line: '192.168.33.67 db'
+
+- name: install apache2 and server components
+  apt: name={{ item }} update_cache=yes
+  with_items:
+    - apache2
+    - libapache2-mod-wsgi
+    - python-pip
+    - python-virtualenv
+    - python-mysqldb
+
+- name: apache2 is running
+  service: name=apache2 state=started enabled=yes
+
+- name: check mod rewrite
+  apache2_module:
+    state=present
+    name=rewrite
+  notify:
+    - restart apache2
+
+- name: ensure mod_wsgi enabled
+  apache2_module:
+    state=present
+    name=wsgi
+  notify:
+    - restart apache2
