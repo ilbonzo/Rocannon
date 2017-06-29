@@ -1,6 +1,6 @@
 # Rocannon
 
-This is `Ansible` playbook for workshop to learn ansible.
+This is `Ansible` playbook for workshop to learn ansible.  
 http://magni.me/Introduction-to-DevOps-with-Ansible
 
 The project build a three tier  architecture:
