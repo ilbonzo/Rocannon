@@ -1,4 +1,7 @@
-# Rocannon
+Rocannon
+=========
+
+[![Build Status](https://travis-ci.org/ilbonzo/Rocannon.svg?branch=master)](https://travis-ci.org/ilbonzo/Rocannon)
 
 This is `Ansible` playbook for workshop to learn ansible.
 http://magni.me/Introduction-to-DevOps-with-Ansible
