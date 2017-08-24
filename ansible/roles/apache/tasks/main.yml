@@ -5,6 +5,8 @@
     path: /etc/hosts
     state: present
     line: '192.168.33.67 db'
+  tags:
+  - no-docker
 
 - name: install apache2 and server components
   apt: name={{ item }} update_cache=yes

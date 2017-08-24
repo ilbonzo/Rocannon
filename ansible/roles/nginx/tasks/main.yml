@@ -8,6 +8,8 @@
   with_items:
     - { ip: 192.168.33.65, name: web1 }
     - { ip: 192.168.33.66, name: web2 }
+  tags:
+  - no-docker
 
 - name: install nginx
   apt:

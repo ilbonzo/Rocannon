@@ -17,6 +17,8 @@
     name=mysql
     state=started
     enabled=yes
+  tags:
+  - no-docker
 
 - name: ensure mysql listen on all ports
   lineinfile:
@@ -27,6 +29,8 @@
 
 - name: create demo database
   mysql_db: name={{ db_name }} state=present
+  tags:
+  - no-docker
 
 - name: create demo user
   mysql_user:
@@ -34,3 +38,5 @@
     password={{ db_password }}
     priv={{ db_name }}.*:ALL host='%'
     state=present
+  tags:
+  - no-docker

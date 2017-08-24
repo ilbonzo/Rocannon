@@ -1,0 +1,8 @@
+---
+- hosts: all
+  become: yes
+  roles:
+    - { role: ../roles/apache }
+    - { role: ../roles/demo }
+    - { role: ../roles/mysql }
+    - { role: ../roles/nginx }

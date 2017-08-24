@@ -1,0 +1,23 @@
+version: "3"
+services:
+  web1:
+    build:
+      context: .
+      dockerfile: ansible/roles/apache/Dockerfile
+    ports:
+      - "4445:80"
+  db:
+   image: debian:jessie
+   build:
+     context: .
+     dockerfile: ansible/roles/mysql/Dockerfile
+   ports:
+     - "3306:3306"
+   volumes:
+    - /var/lib/mysql
+  lb:
+    build:
+      context: .
+      dockerfile: ansible/roles/nginx/Dockerfile
+    ports:
+      - "8080:80"
